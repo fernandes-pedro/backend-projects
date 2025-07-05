@@ -3,7 +3,7 @@
 Este repositório agrupa os principais projetos práticos desenvolvidos durante meu roadmap de estudos em back-end com Python, JavaScript e Java.
 
 ## 🔹 Fundamentos
-- [Calculadora em Python](./fundamentos/calculadora-python/)
+- [Gerenciador de tarefas em Python](./fundamentos/gerenciador.py/)
 - [Tarefas no terminal com JavaScript](./fundamentos/tarefas-cli-js/)
 
 ## 🌐 APIs
