@@ -28,6 +28,10 @@ import http from 'http'
 //Stateful --> Comporta-se de forma diferente baseada nas informacoes salvas (local)
 //Stateless --> Nao se altera devido ao salvamento externo de dados (database, json, etc)
 
+
+//HTTP STATUS CODES
+// codigos que representam a situacao do trafego http/funcionamento da aplicacao (ex. erro 404)
+
 const users = []
 
 //criando servidor http (req e res [require, response ] -> solicitar e devolver info)
@@ -35,7 +39,9 @@ const server = http.createServer((req, res) => {
     //criando requisicao (confirmado pelo /get)
     const {method, url} = req
     if(method == 'GET' && url == '/users'){
-        return res.end('Listagem de usuarios')
+        return res
+        .setHeader('Content-type', 'application/json') // altera a exibicao dos metadados indicando o tipo de informacao a ser exibida (json neste caso[vide documentacao])
+        .end('Listagem de usuarios') //alterado para JSON.stringify(users) para transformar tudo em string usando modelo JSON (Javascript Object Notation)
     }
     if(method == 'POST' && url == '/users'){
         //enviando informacao com push
@@ -44,10 +50,10 @@ const server = http.createServer((req, res) => {
             name: 'Pedro Fernandes',
             email: 'pedrofernandes@example.com'
         })
-        return res.end('Criacao de usuarios')
+        return res.writeHead(201).end() // codigo de status http indicando sucesso
     }
 
-    return res.end("hello ignite")
+   return res.writeHead(404).end('Not Found') // famoso erro 404 Not Found
 })
 
 
