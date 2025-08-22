@@ -1,19 +1,28 @@
 import {fastify} from 'fastify'
+import { DatabaseMemory } from './database-memory'
 
 const server = fastify()
 
-server.get('/', () => {
-    return 'Hello World'
+
+//rota de criacao
+server.post('/usuario', () => {
+    return 'criacao de usuario'
 })
 
-server.get('/hello', () => {
-    return 'Hello Rocket'
+//rota de busca
+server.get('/usuario', () => {
+    return 'busca de usuario'
 })
 
-server.get('/node', () => {
-    return 'Hello node'
-})
+//rota de insercao de dados
+server.put('/usuario/:id', () => {
+    return 'insercao de id'
+})  
 
+//rota de exclusao
+server.delete('/usuario/:id',()=> {
+
+})
 server.listen({
     port:3333,
 })
