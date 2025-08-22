@@ -1,27 +1,48 @@
 import {fastify} from 'fastify'
-import { DatabaseMemory } from './database-memory'
+import { DatabaseMemory } from './database-memory.js'
 
 const server = fastify()
 
+const database = new DatabaseMemory
 
-//rota de criacao
-server.post('/usuario', () => {
-    return 'criacao de usuario'
+server.post('/usuarios', (request, reply) => {
+    const {nome, idade, nomeDaMae} = request.body
+
+    database.create({
+        nome,
+        idade,
+        nomeDaMae,
+    })
+    
+    return reply.status(201).send()
 })
 
-//rota de busca
-server.get('/usuario', () => {
-    return 'busca de usuario'
+
+server.get('/usuarios', () => {
+    const usuarios = database.list()
+    return usuarios 
 })
 
-//rota de insercao de dados
-server.put('/usuario/:id', () => {
-    return 'insercao de id'
+
+
+server.put('/usuarios/:id', (request, reply) => {
+    const usuarioID = request.params.id
+    const {nome, idade, nomeDaMae} = request.body
+
+    database.update(usuarioID, {
+        nome, 
+        idade, 
+        nomeDaMae,
+    })
+
+    return reply.status(204).send()
 })  
 
-//rota de exclusao
-server.delete('/usuario/:id',()=> {
 
+server.delete('/usuarios/:id',(request, reply)=> {
+    const usuarioID = request.params.id
+    database.delete(usuarioID)
+    return reply.status(204).send()
 })
 server.listen({
     port:3333,
