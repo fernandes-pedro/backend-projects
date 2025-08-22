@@ -1,10 +1,10 @@
 # 💼 Repositório de Projetos Back-End
 
-Este repositório agrupa os principais projetos práticos desenvolvidos durante meu roadmap de estudos em back-end com Python, JavaScript e Java.
+Este repositório agrupa os principais projetos práticos desenvolvidos durante meu roadmap de estudos em back-end com Python, Node.js e Java.
 
 ## 🔹 Fundamentos
 - [Gerenciador de tarefas em Python](./fundamentos/gerenciador.py/)
-- [Tarefas no terminal com JavaScript](./fundamentos/tarefas-cli-js/)
+- [Tarefas no terminal com JavaScript](./fundamentos/fundamentos-node/)
 
 ## 🌐 APIs
 - [API de Tarefas com Flask] (Em andamento) <!-- ./apis/api-tarefas-flask/ -->
