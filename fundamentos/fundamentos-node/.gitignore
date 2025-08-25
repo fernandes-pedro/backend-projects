@@ -1,0 +1,3 @@
+#evita o upload dos arquivos abaixo (por serem arquivos e variaveis de ambientes, passivas de mudancas conforme versao/estagio do projeto)
+node_modules
+.env
