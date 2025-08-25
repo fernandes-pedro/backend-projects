@@ -7,7 +7,7 @@ Este repositório agrupa os principais projetos práticos desenvolvidos durante 
 - [CRUD de Usuários com Node.js & Postgres](./fundamentos/fundamentos-node/)  
   > Este projeto implementa um CRUD completo (Create, Read, Update, Delete) de usuários.  
   > As requisições são feitas via arquivo [`routes.http`](./fundamentos/fundamentos-node/routes.http), utilizando Fastify como servidor e Postgres como banco de dados.
-- [Sistema Agregador de Investimentos](.fundamentos/fundamentos-java)
+- [Sistema Agregador de Investimentos em Java](.fundamentos/fundamentos-java)
 
 ## 🌐 APIs
 - [API de Tarefas com Flask](./apis/api-tarefas-flask/) (Em andamento)
