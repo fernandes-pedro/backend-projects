@@ -18,8 +18,10 @@ server.post('/usuarios', (request, reply) => {
 })
 
 
-server.get('/usuarios', () => {
-    const usuarios = database.list()
+server.get('/usuarios', (request) => {
+    const search = request.query.search
+    console.log(search)
+    const usuarios = database.list(search)
     return usuarios 
 })
 
