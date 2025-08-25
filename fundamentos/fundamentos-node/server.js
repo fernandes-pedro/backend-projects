@@ -37,23 +37,20 @@ server.get('/usuarios',  async (request) => {
 
 
 
-server.put('/usuarios/:id', (request, reply) => {
+server.put('/usuarios/:id', async (request, reply) => {
     const usuarioID = request.params.id
     const {nome, idade, nome_da_mae} = request.body
 
-    database.update(usuarioID, {
-        nome, 
-        idade, 
-        nome_da_mae,
-    })
+    await database.update(usuarioID, { nome, idade, nome_da_mae });
+
 
     return reply.status(204).send()
 })  
 
 
-server.delete('/usuarios/:id',(request, reply)=> {
+server.delete('/usuarios/:id', async (request, reply)=> {
     const usuarioID = request.params.id
-    database.delete(usuarioID)
+    await database.delete(usuarioID)
     return reply.status(204).send()
 })
 server.listen({

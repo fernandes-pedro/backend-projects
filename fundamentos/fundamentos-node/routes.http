@@ -22,13 +22,13 @@ GET http://localhost:3333/usuarios
 
 ###
 //Atualiza registo (adicionar id no final do PUT localhost:...)
-PUT http://localhost:3333/usuarios/
+PUT http://localhost:3333/usuarios/2
 Content-Type: application/json
 
 {
-    "nome":"nome_atualizado",
-    "idade": 100,
-    "nome_da_mae":"nome_mae_atualizado"
+    "nome":"Maria da silva",
+    "idade": 40,
+    "nome_da_mae":"Joana Bezerra"
 }
 
 
@@ -37,4 +37,4 @@ Content-Type: application/json
 
 ###
 //Exclui registro
-DELETE http://localhost:3333/usuarios/
+DELETE http://localhost:3333/usuarios/2

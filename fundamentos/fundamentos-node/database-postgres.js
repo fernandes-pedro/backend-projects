@@ -26,13 +26,19 @@ export class DatabasePostgres {
     }
 
 
-    update(id, usuario){
-        
+    async update(id, usuario) {
+        const { nome, idade, nome_da_mae } = usuario;
+        await sql`
+            UPDATE usuarios
+            SET nome = ${nome}, idade = ${idade}, nome_da_mae = ${nome_da_mae}
+            WHERE id = ${id}
+        `;
     }
 
 
-    delete(id){
-        
+
+    async delete(id){
+        await sql`delete from usuarios where id = ${id}`
     }
     
 }
