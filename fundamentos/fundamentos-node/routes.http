@@ -3,9 +3,9 @@ POST http://localhost:3333/usuarios
 Content-Type: application/json
 
 {
-    "nome":"Pedro Fernandes",
+    "nome":"Pedrovski Fernandes",
     "idade": 19,
-    "nomeDaMae":"Edmiriam"
+    "nome_da_mae":"Edmiriam"
 }
 
 
@@ -13,8 +13,7 @@ Content-Type: application/json
 
 ###
 //Lista registros (com ou sem filtro[search=])
-GET http://localhost:3333/usuarios?search=Pedro
-
+GET http://localhost:3333/usuarios
 
 
 
@@ -27,9 +26,9 @@ PUT http://localhost:3333/usuarios/
 Content-Type: application/json
 
 {
-    "nome":"novo_nome",
-    "idade":20,
-    "nomeDaMae":"novo_nome_mae"
+    "nome":"nome_atualizado",
+    "idade": 100,
+    "nome_da_mae":"nome_mae_atualizado"
 }
 
 
@@ -38,4 +37,4 @@ Content-Type: application/json
 
 ###
 //Exclui registro
-DELETE http://localhost:3333/usuarios/f48eebe3-36d0-4935-b7f5-336166466d92
+DELETE http://localhost:3333/usuarios/

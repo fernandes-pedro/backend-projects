@@ -1,49 +1,37 @@
 import {fastify} from 'fastify'
-import { DatabaseMemory } from './database-memory.js'
-import http from "http";
-import sql from "./db.js";
+// import { DatabaseMemory } from './database-memory.js'
+import { DatabasePostgres } from './database-postgres.js';
 
 //conexao com Banco de dados neon
-const requestHandler = async (req, res) => {
-  try {
-    const result = await sql`SELECT version()`;
-    const { version } = result[0];
 
-    res.writeHead(200, { "Content-Type": "text/plain" });
-    res.end(`Connected to Neon!\nVersion: ${version}`);
-  } catch (err) {
-    console.error("Erro ao conectar ao Neon:", err);
-    res.writeHead(500, { "Content-Type": "text/plain" });
-    res.end("Erro interno no servidor");
-  }
-};
 
-http.createServer(requestHandler).listen(3000, () => {
-  console.log("🚀 Server running at http://localhost:3000");
-});
 
 //----------------------------------------------------------------------
 const server = fastify()
 
-const database = new DatabaseMemory
+// const database = new DatabaseMemory
+const database = new DatabasePostgres()
 
-server.post('/usuarios', (request, reply) => {
-    const {nome, idade, nomeDaMae} = request.body
 
-    database.create({
+
+server.post('/usuarios', async (request, reply) => {
+    const {nome, idade, nome_da_mae} = request.body
+
+    await database.create({
         nome,
         idade,
-        nomeDaMae,
+        nome_da_mae,
     })
     
     return reply.status(201).send()
 })
 
 
-server.get('/usuarios', (request) => {
+server.get('/usuarios',  async (request) => {
     const search = request.query.search
-    console.log(search)
-    const usuarios = database.list(search)
+
+    const usuarios = await database.list(search)
+    
     return usuarios 
 })
 
@@ -51,12 +39,12 @@ server.get('/usuarios', (request) => {
 
 server.put('/usuarios/:id', (request, reply) => {
     const usuarioID = request.params.id
-    const {nome, idade, nomeDaMae} = request.body
+    const {nome, idade, nome_da_mae} = request.body
 
     database.update(usuarioID, {
         nome, 
         idade, 
-        nomeDaMae,
+        nome_da_mae,
     })
 
     return reply.status(204).send()
