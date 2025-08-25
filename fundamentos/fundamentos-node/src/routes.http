@@ -13,7 +13,7 @@ Content-Type: application/json
 
 ###
 //Lista registros (com ou sem filtro[search=])
-GET http://localhost:3333/usuarios?search=pedro
+GET http://localhost:3333/usuarios?search=Pedro
 
 
 
@@ -27,9 +27,9 @@ PUT http://localhost:3333/usuarios/
 Content-Type: application/json
 
 {
-    "nome":"Joao da silva",
+    "nome":"novo_nome",
     "idade":20,
-    "nomeDaMae":"Maria"
+    "nomeDaMae":"novo_nome_mae"
 }
 
 

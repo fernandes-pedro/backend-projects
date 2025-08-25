@@ -1,6 +1,28 @@
 import {fastify} from 'fastify'
 import { DatabaseMemory } from './database-memory.js'
+import http from "http";
+import sql from "./db.js";
 
+//conexao com Banco de dados neon
+const requestHandler = async (req, res) => {
+  try {
+    const result = await sql`SELECT version()`;
+    const { version } = result[0];
+
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end(`Connected to Neon!\nVersion: ${version}`);
+  } catch (err) {
+    console.error("Erro ao conectar ao Neon:", err);
+    res.writeHead(500, { "Content-Type": "text/plain" });
+    res.end("Erro interno no servidor");
+  }
+};
+
+http.createServer(requestHandler).listen(3000, () => {
+  console.log("🚀 Server running at http://localhost:3000");
+});
+
+//----------------------------------------------------------------------
 const server = fastify()
 
 const database = new DatabaseMemory
