@@ -1,0 +1,40 @@
+//Cria registro
+POST http://localhost:3333/usuarios
+Content-Type: application/json
+
+{
+    "nome":"Pedrovski Fernandes",
+    "idade": 19,
+    "nome_da_mae":"Edmiriam"
+}
+
+
+
+
+###
+//Lista registros (com ou sem filtro[search=])
+GET http://localhost:3333/usuarios
+
+
+
+
+
+
+###
+//Atualiza registo (adicionar id no final do PUT localhost:...)
+PUT http://localhost:3333/usuarios/2
+Content-Type: application/json
+
+{
+    "nome":"Maria da silva",
+    "idade": 40,
+    "nome_da_mae":"Joana Bezerra"
+}
+
+
+
+
+
+###
+//Exclui registro
+DELETE http://localhost:3333/usuarios/2
